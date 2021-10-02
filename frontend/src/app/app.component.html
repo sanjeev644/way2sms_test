@@ -1,0 +1,40 @@
+<div style="text-align: center; margin-top: 50px">
+  <span>Enter Product Name</span>
+  <br>
+  <input type="text" placeholder="Enter Product Name" [(ngModel)]="productName" />
+  <br />
+  <br />
+  <span>Upload Product Image</span>
+   <br>
+  <input type="file" (change)="fileChangeEvent($event)" />
+
+  <image-cropper
+    [imageChangedEvent]="imageChangedEvent"
+    [maintainAspectRatio]="true"
+    [resizeToWidth]="0"
+    format="png"
+    (imageCropped)="imageCropped($event)"
+  ></image-cropper>
+  
+  <!-- <img [height]="400" [width]='600' [src]="croppedImage" *ngIf="croppedImage"   /> -->
+  <br />
+  <button (click)="createProduct()">submit</button>
+</div>
+
+<br />
+
+
+
+<table style="border: 1px solid; text-align: center; width: 100%">
+  <caption>Product List</caption>
+  <tr>
+    <th>S.no</th>
+    <th>Name</th>
+    <th>Image</th>
+  </tr>
+  <tr *ngFor="let item of products;let i=index">
+    <td>{{i + 1}}</td>
+    <td>{{item?.name}}</td>
+    <td><img [height]="100" [width]='200' [src]="imageBaseUrl + item?.image" /></td>
+  </tr>
+</table>
