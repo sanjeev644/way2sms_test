@@ -7,7 +7,7 @@ FrontEnd APP RUN
 
 1. npm i
 
-2. ng g s
+2. ng s
 
 
 Backend APP RUN
